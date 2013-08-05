@@ -1,0 +1,16 @@
+doctype 5
+html(ng-app="aijobs")
+	head
+		title= title
+		link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+		link(rel='stylesheet', href='/stylesheets/style.css')
+	body
+		div(ng-view, ng-controller='MainController')
+
+		script(type='text/javascript', src='//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js')
+		script(type='text/javascript', src='/js/libs/angular.min.js')
+		script(type='text/javascript', src='/js/libs/d3.v3.min.js')
+		script(type='text/javascript', src='/js/libs/bootstrap.min.js')
+		script(type='text/javascript', src='/js/libs/underscore-min.js')
+		script(type='text/javascript', src='/js/angularApp.js')
+		script(type='text/javascript', src='/js/controllers.js')

@@ -1,0 +1,56 @@
+﻿
+extends layout
+
+block body
+	.controls.pull-left.col-lg-3
+		h1 Filter Controls
+
+		h3 Instant Search
+		input(type='text', autofocus, placeholder='Start Typing...', ng-model='filter.$') 
+		br
+		h3 Filter by Category
+		select(ng-model='filter.Category', ng-options='cat for cat in jobCategories')
+
+		h3 Filter by Job Experience
+		select(ng-model='filter.ExperienceLevel', ng-options='ex for ex in jobExperiences')
+	
+		br
+		br
+
+		input(type='radio', id='rb_location', ng-click='groupJobs()', ng-model='currentProperty', value='location', name='groupType')
+		label(for='rb_location') Location
+		br
+		input(type='radio', id='rb_experience', ng-click='groupJobs()', ng-model='currentProperty', value='ExperienceLevel', name='groupType') 
+		label(for='rb_experience') Experience Level
+		br
+		input(type='radio', id='rb_category', ng-click='groupJobs()', ng-model='currentProperty', value='Category', name='groupType') 
+		label(for='rb_category') Job Type
+
+		br
+		br
+		button(type='button', ng-click='resetFilter()').btn Reset Filter
+
+	.jobListingContainer(ng-switch on='groupingType')
+		.row(ng-switch-when='allJobs')
+			.job.col-lg-3(ng-repeat='job in allJobs | filter:filter', ng-click='displayDetailedJob(job)')
+				h4 {{ job.jobTitle }}
+		
+		.categoryContainer(ng-switch-when='categories')
+			.row.category(ng-repeat='category in categorizedJobs', ng-class='setRowClass($index, category)')
+				h2.text-center {{ setPropertyTitle(category) }}
+
+				.job.col-lg-3(ng-repeat='job in category | filter:filter', ng-click='displayDetailedJob(job)')
+					h4 {{ job.jobTitle }}
+	
+	.jobDetailContainer(ng-show='showDetailedContainer')
+		h2.text-center {{ detailedJob.jobTitle }}
+		p.text-center Location: {{ detailedJob.location }}
+		p.text-center Experience Level: {{ detailedJob.ExperienceLevel }}
+		p.text-center Job Type: {{ detailedJob.Category }}
+		br
+		button(type='button', ng-click='showDetailedContainer = false').btn Close
+		button(type='button').btn.pull-right Learn More!
+
+
+			
+			

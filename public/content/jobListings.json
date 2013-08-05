@@ -1,0 +1,69 @@
+﻿[
+	{
+		"jobTitle": "Software Engineer",
+		"location": "Lanham",
+		"ExperienceLevel": "Junior",
+		"Category": "Developer"
+	},
+
+	{
+		"jobTitle": "Junior FF Engineer",
+		"location": "JSC",
+		"ExperienceLevel": "Junior",
+		"Category": "Developer"
+	},
+
+	{
+		"jobTitle": "Senior Software Engineer",
+		"location": "Lanham",
+		"ExperienceLevel": "Senior",
+		"Category": "Developer"
+	},
+
+	{
+		"jobTitle": "Project Manager",
+		"location": "Lanham",
+		"ExperienceLevel": "Mid",
+		"Category": "Manager"
+	},
+
+	{
+		"jobTitle": "Software Engineer",
+		"location": "KSC",
+		"ExperienceLevel": "Mid",
+		"Category": "Developer"
+	},
+
+	{
+		"jobTitle": "Task Lead For CCS",
+		"location": "Lanham",
+		"ExperienceLevel": "Senior",
+		"Category": "Manager"
+	},
+
+	{
+		"jobTitle": "IT Systems Engineer",
+		"location": "Huntsville",
+		"ExperienceLevel": "Mid",
+		"Category": "Developer"
+	},
+
+	{
+		"jobTitle": "Aerospace Engineer",
+		"location": "Lanham",
+		"ExperienceLevel": "Mid",
+		"Category": "Aerospace"
+	},
+	{
+		"jobTitle": "Free Flyer Developer",
+		"location": "Lanham",
+		"ExperienceLevel": "Senior",
+		"Category": "Developer"
+	},
+	{
+		"jobTitle": "CEO/President",
+		"location": "Lanham",
+		"ExperienceLevel": "Senior",
+		"Category": "Manager"
+	}
+]
