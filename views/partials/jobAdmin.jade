@@ -1,0 +1,31 @@
+﻿
+extends layout
+
+block body
+
+	.container(ng-switch on='creationStep')
+	
+		h1 Job Administration
+
+		h3 Add A New Job Posting
+
+		div(ng-switch-when='addNew')
+			input(type='text', placeholder='Job Title', ng-model='jobToAdd.jobTitle')
+			br
+			h4 Select Category
+			select(ng-model='jobToAdd.location', ng-options='cat for cat in jobCategories')
+
+			h4 Select Job Experience
+			select(ng-model='jobToAdd.ExperienceLevel', ng-options='ex for ex in jobExperiences')
+
+			h4 Select Location
+			select(ng-model='jobToAdd.Category', ng-options='loc for loc in jobLocations')
+
+			br
+			br
+			button(type='button', ng-click="createNewJob()").btn.btn-large Create Job
+		
+		div(ng-switch-when='success')
+			h1 GOOD JOB YOU ADDED: 
+			br
+			p {{ newlyCreatedJob }}

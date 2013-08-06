@@ -1,13 +1,39 @@
-﻿function MainController ($scope) {
+﻿// Controller.js
+
+// main controller 
+function MainController($scope) {
 
 }
 
+// job Listings controller
 function JobListingsController ($scope, $http) {
 
-    $http.get('content/jobListings.json').success(function (data) {
-        $scope.allJobs = data;
+    function init() {
         $scope.groupingType = 'allJobs';
-    });
+
+        callWebMethod('getAllJobs', {}, function (data) {
+
+            $scope.allJobs = data;
+        });
+    }
+
+    init();
+
+    function callWebMethod(webMethod, requestParameters, callback) {
+
+        $http({
+            url: '/' + webMethod,
+            method: 'POST',
+            data: requestParameters
+        }).success(function (returnMessage, status, headers, config) {
+
+            callback(returnMessage.data);
+
+        }).error(function (error, status, headers, config) {
+            console.log(error);
+        });
+    }
+
 
     $scope.filterBySpecificJob = function (filter) {
         $scope.filter = filter;
@@ -52,4 +78,61 @@ function JobListingsController ($scope, $http) {
         "Mid",
         "Senior"
     ];
+}
+
+// job admin controller
+function JobAdminController($scope, $http) {
+    $scope.creationStep = 'addNew';
+
+    $scope.jobToAdd = {
+        jobTitle: '',
+        location: '',
+        ExperienceLevel: '',
+        Category: ''
+    }
+
+    $scope.createNewJob = function () {
+        var requestParameters = { newJob: $scope.jobToAdd };
+
+        callWebMethod('addNewJob', requestParameters, function () {
+            $scope.creationStep = 'success';
+        });
+    }
+
+    /* temp stored data */
+    $scope.jobCategories = [
+        "Developer",
+        "Manager",
+        "Aerospace"
+    ];
+
+    $scope.jobExperiences = [
+        "Junior",
+        "Mid",
+        "Senior"
+    ];
+
+    $scope.jobLocations = [
+       "Lanham",
+       "Florida",
+       "Huntsville",
+       "Colorado",
+       "Other"
+    ];
+
+
+    function callWebMethod(webMethod, requestParameters, callback) {
+
+        $http({
+            url: '/' + webMethod,
+            method: 'POST',
+            data: requestParameters
+        }).success(function (returnMessage, status, headers, config) {
+
+            callback(returnMessage.data);
+
+        }).error(function (error, status, headers, config) {
+            console.log(error);
+        });
+    }
 }

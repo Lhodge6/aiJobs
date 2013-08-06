@@ -14,5 +14,9 @@ aijobs.config(['$routeProvider', '$locationProvider', function ($routeProvider, 
             templateUrl: '/partials/jobListings',
             controller: JobListingsController
         })
+        .when('/jobAdmin', {
+            templateUrl: '/partials/jobAdmin',
+            controller: JobAdminController
+        })
         .otherwise({ redirectTo: '/' });
 }]);
